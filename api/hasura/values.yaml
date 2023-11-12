@@ -1,0 +1,38 @@
+# ref: https://github.com/hasura/helm-charts/blob/main/charts/
+graphql-engine:
+  config:
+    ## Do we use the Postgres connection for metadata storage only?
+    ## - If true: HASURA_GRAPHQL_METADATA_DATABASE_URL=<database_url>
+    ## - If false: HASURA_GRAPHQL_DATABASE_URL=<database_url>
+    ## Only takes effect when @secret.metadataDbUrl isn't set
+    ##
+    metadataOnly: false
+
+  secret:
+    #adminSecret: db9NpMbh2Yb8bt
+    adminSecret: "2a72593aa9cc3cb368ffdf0d"
+    eeLicenseKey: ""
+    jwtSecret:
+      {
+        jwk_url: "http://keycloak-http.coffee-shop.svc.cluster.local:80/auth/realms/coffee-biz/protocol/openid-connect/certs",
+      }
+    # jwtSecret: {
+    #   "type": RS256,
+    # "key": "-----BEGIN PUBLIC KEY-----MIICmzCCAYMCBgGLoXnDtDANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDDAZoYXN1cmEwHhcNMjMxMTA1MjE1MTMzWhcNMzMxMTA1MjE1MzEzWjARMQ8wDQYDVQQDDAZoYXN1cmEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCpet8Irj9cJhjGzrCNvjgx5bnAoKgz7icFgNis80IM1CbpaZ6WV8GyzO99R+9C9zkYus1rQCi08jQM3df4B0Xkg1g9jzvo7NBD/18xZuuiaDsm39Wd4LtKWE9l6/Xucl+mETSJB/Z6UHAO9t3LGqLZ928hvoxZGR8O0GY3VZUBiXM7shEFG4095xu0PJuRmHdGaaUFMPwsEvhBcB+n9d2SCNiIy4ml5A5oG4rBDUaOj60biPE29kJsuUD7aqMrL5s3uU0gglGYnZ3SRMsunhd77YG9Op9JxtcZCd0Lqhbj7dejGtiC27WM9kDwHuAIt5yUk9bNmGqOE95vU5KOV9yBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAIQpZpuIoUymSsgssNKOi1bxrO28DDBvyjOK7bx9HLg24zRoMIPXfZsqz2LGutgQ05bbX7e/CpiYMlqF6XfqgTmVW0e8h/B2uoSlFiB/xKqJjpuUj0jrXnDBdO7B+Yh/egXdRk8GhEoZrJI0DheDfE+4/s2/tEzMjNDrdDHLHG73M0NQrnVr6A/KBtEyRz2m9FUskEd6ITr3fMrS8hXg8AiqJeBii8lykW5AOJ4f0q3jyFNPBiyfTS9csTbXjw6zKOEYN6c6dvH24LzuzY7mBfWivgP9bjHpwySc1nxEsjqrc7QZnx+xsi3xaekRvNfLxt+DchjlJjBzcbF0sszgAIc=-----END PUBLIC KEY-----",
+    #     "key": "-----BEGIN CERTIFICATE-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlpY9C7vazsWM/EptrfQ4+OdrQEOBmvYwDz9lc8JAR6CFEoww92KsycMWZDKVdCOdgDTiC6qk0b7HmsWlafrGeHB2fR10qfn/nGEa56eYx2HyqsRoDVuK/QWqzXiAu3KiWb2JnY7NDyp3bumKWV8FQriltMnJ8F+/xRE6njECIPSWHzfnHPrb6dN7QS0P4+/EamFTcixR6OO61rViqFRl78DI2uUx9xPQiY+7z4K+yy5qC11bUCffBEl2VONflATsVgMgF6s0u/3/Rj70JqeUli/LP4LdnFTrYe2zZ/BBqBNPPmNIZxuV/XkC5c5iDEHiB5bdFfg56ZsAhSBg63DwTQIDAQAB\n-----END CERTIFICATE-----",
+    #    "claims_format": stringified_json,
+    #   }
+  postgres:
+    enabled: true
+    auth:
+      username: hasura
+      password: postgrespassword
+      database: hasura
+    persistence:
+      enabled: true
+      size: 10Gi
+  ingress:
+    enabled: true
+    hostName: "hasura.code-server.com"
+    ingressClassName: ""
+    annotations: {}
