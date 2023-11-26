@@ -148,22 +148,22 @@ Configure the following mappers in Keycloak for proper JWT token generation:
 
 1. **User ID Mapper**:
    - **Protocol**: openid-connect
-   - **Name**: hasura-claim-user-id
+   - **Name**: x-hasura-user-id
    - **Mapper Type**: User Property
    - **Property**: id
-   - **Token Claim Name**: **`https://hasura.io/jwt/claims.x-hasura-user-id`**
+   - **Token Claim Name**: **`https://hasura\.io/jwt/claims.x-hasura-user-id`**
 2. **Default Role Mapper**:
    - **Protocol**: openid-connect
-   - **Name**: hasura-claim-default-role
+   - **Name**: x-hasura-default-role
    - **Mapper Type**: Hardcoded claim
-   - **Token Claim Name**: **`https://hasura.io/jwt/claims.x-hasura-default-role`**
+   - **Token Claim Name**: **`https://hasura\.io/jwt/claims.x-hasura-allowed-roles`**
    - **Claim value**: [Your default role for users]
 3. **Allowed Roles Mapper**:
    - **Protocol**: openid-connect
-   - **Name**: hasura-claim-allowed-roles
+   - **Name**: x-hasura-allowed-roles
    - **Mapper Type**: User Client Role
    - **Multivalued**: On
-   - **Token Claim Name**: **`https://hasura.io/jwt/claims.x-hasura-allowed-roles`**
+   - **Token Claim Name**: **`https://hasura\.io/jwt/claims.x-hasura-allowed-roles`**
    - **Client ID**: [Your Hasura Client ID]
 
 _These mappers are critical for ensuring that the JWT tokens include necessary claims for Hasura's authorization mechanism._
