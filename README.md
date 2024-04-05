@@ -173,8 +173,8 @@ _These mappers are critical for ensuring that the JWT tokens include necessary c
 After configuring Keycloak, test the integration by obtaining a user token using Keycloak's token endpoint.
 
 ```bash
-curl -d 'client_id=coffee-biz' -d 'username=antonio' -d 'password=password' -d 'grant_type=password' \
-    'http://0.0.0.0:8081/auth/realms/coffee-biz/protocol/openid-connect/token' | \
+curl -d 'client_id='realmClientID' -d 'username=testUsername' -d 'password=testUserPass' -d 'grant_type=password' \\
+    '<http://0.0.0.0:8081/auth/realms/realmClientID/protocol/openid-connect/token>' | \\
  python3 -m json.tool
 ```
 
@@ -183,6 +183,8 @@ Use this token in the Hasura console or API requests to verify that authenticati
 ![Untitled.png](%5BBlog%20Draft%20by%20ChatGPT%5D%20d585e3a9696c44bdbd35e17306f1c7e0/Untitled.png)
 
 ## **4. Setting Up the Frontend with Next.js**
+
+https://nextjs.org/docs/pages/api-reference/create-next-app
 
 ### **Initializing the App**
 

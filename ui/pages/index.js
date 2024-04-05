@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { withApollo } from "../lib/withApollo";
 
 const Landing = () => {
   return (
     <h2>
-      <Link href="/single-origin/">Single origin coffee</Link>
+      Hello World
     </h2>
   );
 };

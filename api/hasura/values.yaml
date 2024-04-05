@@ -14,7 +14,7 @@ graphql-engine:
     eeLicenseKey: ""
     jwtSecret:
       {
-        jwk_url: "http://keycloak-http.coffee-shop.svc.cluster.local:80/auth/realms/coffee-biz/protocol/openid-connect/certs",
+        jwk_url: "http://keycloak-http.my-app.svc.cluster.local:80/auth/realms/my-app/protocol/openid-connect/certs",
       }
     # jwtSecret: {
     #   "type": RS256,
